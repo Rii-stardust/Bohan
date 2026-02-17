@@ -1,0 +1,97 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-color:white;">
+    <h1 style="color:rgb(101, 101, 101);">防犯用</h1>
+    <p>夜道の帰り、怖いときに使ってください</p>
+    <p>盛り上がりたいときにも使えちゃうかも…？</p>
+<style>
+h1, p {
+    text-align: center; /* 文字を左右の中央に */
+}
+body{
+    margin:0;
+    height:100vh;
+}
+    .btn-area{
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+    }
+    
+    button{
+        width:100px;
+        height:100px;
+        border-radius:50%;
+
+        font-size:18px;
+        padding: 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor:pointer;
+        background-color:red;
+        font-weight:bold;
+        border:none;
+        box-shadow:0 4px 10px
+    rgba(0,0,0,0,5)
+    }
+</style>
+<div class="btn-area">
+    <button onclick="WhiteBlackPato()"
+style="background-color:black;
+color:white;">防犯モード</button>
+    <button onclick="RedWhitePato()"
+style="background-color:red;
+color:white;">SOS</button>
+    <button onclick="stopPato()"
+style="background-color:aquamarine;
+color:black;">ストップ</button>
+</div>
+
+<script>
+let timer=null;
+let isFirstColor=true;
+
+function WhiteBlackPato(){
+    if  (timer) stopPato();
+
+    isFirstColor=true;
+    timer=setInterval(()=>{
+    if(isFirstColor){
+        document.body.style.backgroundColor='black';
+        isFirstColor=false
+        ;
+    }else{
+        document.body.style.backgroundColor='white';
+        isFirstColor=true;
+    }
+  },500);
+}
+function RedWhitePato(){
+    if  (timer) stopPato();
+
+    isFirstColor=true;
+    timer=setInterval(()=>{
+    if(isFirstColor){
+        document.body.style.backgroundColor='red';
+        isFirstColor=false
+        ;
+    }else{
+        document.body.style.backgroundColor='white';
+        isFirstColor=true;
+    }
+  },400);
+}
+function stopPato(){
+    clearInterval(timer);
+    timer=null;
+    document.body.style.backgroundColor='white';
+}
+</script>
+</body>
